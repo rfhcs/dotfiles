@@ -127,10 +127,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ff="fastfetch"
 alias update="brew update && brew upgrade && brew cleanup --prune=all && brew doctor"
-alias wipe="killall zsh && exec rm -rf $HISTFILE"
-
-# Commands to run on start
-#
 
 # Homebrew Python to PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
