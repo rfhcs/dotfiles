@@ -1,0 +1,27 @@
+# Fonts
+font-family = JetBrainsMonoNL Nerd Font
+font-size = 12
+
+
+# Padding
+window-padding-x = 16
+window-padding-y = 16
+
+# Window styling
+macos-titlebar-style = hidden
+window-height = 500
+window-width = 500
+
+
+# Background
+theme = TokyoNight Storm
+background-opacity = 0.9
+background-blur = true
+
+# Cursor
+shell-integration-features = false
+cursor-style = block
+cursor-style-blink = false
+
+# Settings
+quit-after-last-window-closed=true
