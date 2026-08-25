@@ -1,6 +1,7 @@
-# Fonts
-font-family = JetBrainsMono
+# Theme
+font-family = JetBrains Mono
 font-size = 11
+theme = Gruvbox Dark
 
 # Padding
 window-padding-x = 16
@@ -23,15 +24,3 @@ macos-titlebar-style = hidden
 shell-integration-features = false
 quit-after-last-window-closed = true
 mouse-hide-while-typing = true
-
-# Keybinds
-
-keybind = ctrl+a>h=new_split:left
-keybind = ctrl+a>j=new_split:down
-keybind = ctrl+a>k=new_split:up
-keybind = ctrl+a>l=new_split:right
-
-keybind = ctrl+a>arrow_left=goto_split:left
-keybind = ctrl+a>arrow_down=goto_split:down
-keybind = ctrl+a>arrow_up=goto_split:up
-keybind = ctrl+a>arrow_right=goto_split:right
