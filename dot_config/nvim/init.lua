@@ -21,10 +21,16 @@ vim.cmd([[colorscheme gruvbox]])
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.showbreak = "↳ "  -- Shows an arrow at the start of wrapped lines
+vim.opt.cursorline = true
+
+-- spelling
+vim.opt.spell = true
 
 -- nvim-tree binds
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
