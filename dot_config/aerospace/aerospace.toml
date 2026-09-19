@@ -3,6 +3,7 @@ config-version = 2
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
+default-root-container-layout = 'accordion'
 
 [gaps]
 inner.horizontal = 7
@@ -89,3 +90,8 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+#[[on-window-detected]]
+#if.app-id = 'org.gnu.Emacs'
+#if.window-title-regex-substring = '^Emacs$'
+#run = 'layout floating'

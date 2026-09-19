@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Rey Stone"
+(setq user-full-name "rfhcs"
       user-mail-address "reyhstone@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -83,3 +83,17 @@
 ;;
 ;; Undecorated frame for macos.
 (add-to-list 'default-frame-alist '(undecorated . t))
+
+(setq pdf-view-display-hotspot nil)
+
+(after! latex
+  (setq +latex-viewers '(pdf-tools))
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))))
+
+(after! evil-surround
+  ;; Bind 'e' in evil-surround to prompt for a LaTeX environment
+  (add-to-list 'evil-surround-pairs-alist
+               '(?e . (lambda ()
+                        (let ((env (read-string "Environment: ")))
+                          (cons (format "\\begin{%s}\n" env)
+                                (format "\n\\end{%s}" env)))))))
