@@ -47,7 +47,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Desktop/org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -81,8 +81,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
-;; Undecorated frame for macos.
+;;
+;; Keybinds are here
+;;
+;;
+;;
+;; AFTER THIS LINE IS ALL PER SYSTEM MODIFICATIONS. DO NOT COPY
 (add-to-list 'default-frame-alist '(undecorated . t))
+
+(use-package! exec-path-from-shell
+  :init (exec-path-from-shell-initialize))
 
 (setq pdf-view-display-hotspot nil)
 
@@ -97,3 +105,34 @@
                         (let ((env (read-string "Environment: ")))
                           (cons (format "\\begin{%s}\n" env)
                                 (format "\n\\end{%s}" env)))))))
+(after! conda
+  (setq conda-anaconda-home "/opt/homebrew/Caskroom/miniconda/base"
+        conda-env-home-directory "/opt/homebrew/Caskroom/miniconda/base"))
+
+(after! (python eglot)
+  (set-eglot-client! '(python-mode python-ts-mode)
+    (lambda (&rest _) (list (or (+python-executable-find "pylsp") "pylsp")))))
+
+(with-eval-after-load 'eglot
+  (with-eval-after-load 'typst-ts-mode
+    (add-to-list 'eglot-server-programs
+                 `((typst-ts-mode) .
+                   ,(eglot-alternatives `(,typst-ts-lsp-download-path
+                                          "tinymist"
+                                          "typst-lsp"))))))
+
+(after! typst-preview
+  (setq typst-preview-executable "tinymist")
+  )
+
+(add-hook 'pdf-view-mode-hook #'auto-revert-mode)
+
+(setq auto-revert-verbose nil)
+
+(use-package! typst-ts-mode
+  :custom
+  (typst-ts-watch-options "--open")
+  (typst-ts-mode-enable-raw-blocks-highlight t)
+  :config
+  ;; Open the compiled PDF in another Emacs window (triggers pdf-tools)
+  (setq typst-ts-preview-function #'find-file-other-window))

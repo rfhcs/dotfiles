@@ -22,9 +22,7 @@ ZSH_TMUX_AUTOQUIT=true
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias ff="fastfetch"
 alias update="brew update && brew upgrade && brew cleanup --prune=all && brew doctor"
-alias spotify="spotify_player"
 
 # Homebrew Python to PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -38,3 +36,23 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # because my gpg keeps on failing for some reason
 export GPG_TTY=$(tty)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="/opt/homebrew/opt/jpeg/bin:$PATH"
+
+# Created by `pipx` on 2026-09-18 19:35:37
+export PATH="$PATH:/Users/rey/.local/bin"
